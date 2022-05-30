@@ -67,7 +67,7 @@ static const struct arg args[] = {
 	/* function format          argument */
 	{ run_command, "  %3s | ", "pamixer --get-volume-human" },
 	{ cpu_perc, "  %s% | ", NULL },
-	{ ram_used, "%s | ", NULL },
-  { battery_perc, "  %s% | ", "BAT0" },
+  { temp, " %s C | ", "/sys/class/thermal/thermal_zone0/temp", NULL },
+	{ ram_used, "RAM %s | ", NULL },
 	{ datetime, " %s",           "%a %b %d %r " },
 };
