@@ -10,7 +10,7 @@ static const char *ranger[] = { "st", "-e", "ranger", NULL };
 static const char *wacommonswitch[] = { "/home/chuck/switch_mons.sh", NULL };
 static const char *powermenu[] = { "/home/chuck/.config/powermenu.sh", NULL };
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 16;        /* gaps between windows */
+static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 1;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
@@ -26,7 +26,7 @@ static const char col_gray2[]       = "#504945";
 static const char col_gray3[]       = "#ebdbb2";
 static const char col_gray4[]       = "#3c3836";
 static const char col_cyan[]        = "#d79921";
-static const char col_cyan2[]       = "#83a598";
+static const char col_cyan2[]       = "#fe8019";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
