@@ -6,7 +6,9 @@
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle",  NULL };
-static const char *ranger[] = { "st", "-e", "ranger", NULL };
+static const char *mutemic[] = { "/usr/bin/pactl", "set-source-mute",   "@DEFAULT_SOURCE@", "toggle",  NULL };
+static const char *brightnessup[] = { "brightnessctl", "set", "+5%", NULL };
+static const char *brightnessdown[] = { "brightnessctl", "set", "5%-", NULL };
 static const char *wacommonswitch[] = { "/home/chuck/switch_mons.sh", NULL };
 static const char *powermenu[] = { "/home/chuck/.config/powermenu.sh", NULL };
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -56,7 +58,6 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",	  NULL,			NULL,		0,				1,			 -1 },
-	{ "Firefox",  NULL,			NULL,		1 << 8,			0,			 -1 },
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
 	{ NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 },
@@ -94,14 +95,16 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *altermcmd[]  = { "alacritty", NULL };
 static const char *screenshotcmd[] = { "/home/chuck/.config/suckless/dwm/screenshot.sh", NULL };
 static const char *browsercmd[] = { "google-chrome-stable", "-n", NULL };
-static const char *privbrowsercmd[] = { "brave", "-n", NULL };
+static const char *privbrowsercmd[] = { "firefox", "-n", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ 0,              XF86XK_AudioLowerVolume, spawn, 	       {.v = downvol } },
-	{ 0,              XF86XK_AudioMute,	   spawn, 	           {.v = mutevol } },
+	{ 0,              XF86XK_AudioMute,	       spawn, 	       {.v = mutevol } },
 	{ 0,              XF86XK_AudioRaiseVolume, spawn, 	       {.v = upvol   } },
-  { MODKEY,                       XK_f,      spawn,          {.v = ranger } },
+  { MODKEY,         XF86XK_AudioMute,        spawn,          {.v = mutemic } },
+  { 0,              XF86XK_MonBrightnessUp,  spawn,          {.v = brightnessup } },
+  { 0,              XF86XK_MonBrightnessDown,  spawn,        {.v = brightnessdown } },
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = altermcmd } },
