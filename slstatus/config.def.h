@@ -62,13 +62,14 @@ static const char unknown_str[] = "n/a";
  *                                                     NULL on OpenBSD
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
+ * 
+  { cpu_freq, "  %s | ", NULL },
  */
 static const struct arg args[] = {
 	/* function format          argument */
   { run_command, "  %3s | ", "pamixer --get-volume-human" },
-	{ cpu_perc, "  %s% | ", NULL },
-  { cpu_freq, "  %s | ", NULL },
+	{ cpu_perc, " %s% | ", NULL },
   { temp,     " %s | ", "/sys/class/hwmon/hwmon1/temp1_input" },
 	{ ram_used, " %s | ", NULL },
-	{ datetime, " %s",           "%a %b %d %r " },
+	{ datetime, " %s",           "%a %b %d %R " },
 };

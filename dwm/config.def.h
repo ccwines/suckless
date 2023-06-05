@@ -6,7 +6,6 @@
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle",  NULL };
-static const char *ranger[] = { "st", "-e", "ranger", NULL };
 static const char *wacommonswitch[] = { "/home/chuck/switch_mons.sh", NULL };
 static const char *powermenu[] = { "/home/chuck/.config/powermenu.sh", NULL };
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -26,7 +25,7 @@ static const char col_gray2[]       = "#504945";
 static const char col_gray3[]       = "#ebdbb2";
 static const char col_gray4[]       = "#3c3836";
 static const char col_cyan[]        = "#d79921";
-static const char col_cyan2[]       = "#fe8019";
+static const char col_cyan2[]       = "#a89984";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -37,7 +36,7 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "144x41", NULL };
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "152x43", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
 static Sp scratchpads[] = {
@@ -48,7 +47,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -94,14 +93,13 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *altermcmd[]  = { "alacritty", NULL };
 static const char *screenshotcmd[] = { "/home/chuck/.config/suckless/dwm/screenshot.sh", NULL };
 static const char *browsercmd[] = { "google-chrome-stable", "-n", NULL };
-static const char *privbrowsercmd[] = { "brave", "-n", NULL };
+static const char *privbrowsercmd[] = { "firefox", "-n", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ 0,              XF86XK_AudioLowerVolume, spawn, 	       {.v = downvol } },
 	{ 0,              XF86XK_AudioMute,	   spawn, 	           {.v = mutevol } },
 	{ 0,              XF86XK_AudioRaiseVolume, spawn, 	       {.v = upvol   } },
-  { MODKEY,                       XK_f,      spawn,          {.v = ranger } },
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = altermcmd } },
@@ -121,6 +119,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+  { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
   { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,             XK_space,  setlayout,      {0} },
