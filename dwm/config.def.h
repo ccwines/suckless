@@ -6,6 +6,8 @@
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle",  NULL };
+static const char *monbrightnessup[] = { "/usr/bin/brightnessctl", "set",   "+10%", NULL };
+static const char *monbrightnessdown[] = { "/usr/bin/brightnessctl", "set",   "10%-", NULL };
 static const char *wacommonswitch[] = { "/home/chuck/switch_mons.sh", NULL };
 static const char *powermenu[] = { "/home/chuck/.config/powermenu.sh", NULL };
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -38,16 +40,16 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "152x43", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-const char *spcmd3[] = {"keepassxc", NULL };
+const char *spcmd3[] = {"st", "-n", "spspot", "-g", "152x43", "-e", "/home/chuck/.config/scripts/launchspt", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spranger",    spcmd2},
-	{"keepassxc",   spcmd3},
+	{"spspot",      spcmd3},
 };
 
 /* tagging */
-static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -58,7 +60,7 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,			NULL,		1 << 8,			0,			 -1 },
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
-	{ NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 },
+	{ NULL,		  "spspot",	NULL,		SPTAG(2),		1,			 -1 },
 };
 
 /* layout(s) */
@@ -92,7 +94,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-l", "16", "-m", dmenumon, "-fn"
 static const char *termcmd[]  = { "st", NULL };
 static const char *altermcmd[]  = { "alacritty", NULL };
 static const char *screenshotcmd[] = { "/home/chuck/.config/suckless/dwm/screenshot.sh", NULL };
-static const char *browsercmd[] = { "google-chrome-stable", "-n", NULL };
+static const char *browsercmd[] = { "microsoft-edge", "-n", NULL };
 static const char *privbrowsercmd[] = { "firefox", "-n", NULL };
 
 static Key keys[] = {
@@ -100,6 +102,8 @@ static Key keys[] = {
 	{ 0,              XF86XK_AudioLowerVolume, spawn, 	       {.v = downvol } },
 	{ 0,              XF86XK_AudioMute,	   spawn, 	           {.v = mutevol } },
 	{ 0,              XF86XK_AudioRaiseVolume, spawn, 	       {.v = upvol   } },
+	{ 0,              XF86XK_MonBrightnessUp, spawn, 	         {.v = monbrightnessup   } },
+	{ 0,              XF86XK_MonBrightnessDown, spawn, 	       {.v = monbrightnessdown   } },
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = altermcmd } },
