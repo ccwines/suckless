@@ -6,6 +6,7 @@
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle",  NULL };
+static const char *mutemic[] = { "/usr/bin/pactl", "set-source-mute",   "@DEFAULT_SOURCE@", "toggle",  NULL };
 static const char *monbrightnessup[] = { "/usr/bin/brightnessctl", "set",   "+10%", NULL };
 static const char *monbrightnessdown[] = { "/usr/bin/brightnessctl", "set",   "10%-", NULL };
 static const char *wacommonswitch[] = { "/home/chuck/switch_mons.sh", NULL };
@@ -102,7 +103,8 @@ static Key keys[] = {
 	{ 0,              XF86XK_AudioLowerVolume, spawn, 	       {.v = downvol } },
 	{ 0,              XF86XK_AudioMute,	   spawn, 	           {.v = mutevol } },
 	{ 0,              XF86XK_AudioRaiseVolume, spawn, 	       {.v = upvol   } },
-	{ 0,              XF86XK_MonBrightnessUp, spawn, 	         {.v = monbrightnessup   } },
+	{ 0,              XF86XK_AudioMicMute,     spawn, 	       {.v = mutemic   } },
+	{ 0,              XF86XK_MonBrightnessUp,  spawn, 	         {.v = monbrightnessup   } },
 	{ 0,              XF86XK_MonBrightnessDown, spawn, 	       {.v = monbrightnessdown   } },
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },

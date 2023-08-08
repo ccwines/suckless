@@ -68,6 +68,7 @@ static const char unknown_str[] = "n/a";
 static const struct arg args[] = {
 	/* function format          argument */
   { run_command, "  %3s | ", "pamixer --get-volume-human" },
+  { battery_perc, "  %s% | ", "BATT" },
 	{ cpu_perc, " %s% | ", NULL },
   { temp,     " %s | ", "/sys/class/hwmon/hwmon1/temp1_input" },
 	{ ram_used, " %s | ", NULL },
